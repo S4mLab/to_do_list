@@ -1,13 +1,26 @@
 <script>
     import Card from "./Card.svelte";
+    import {createEventDispatcher} from 'svelte'
     export let feedbackObj = {};
+    
+    const dispatcher = createEventDispatcher()
+
+    const handleDelete = (feedbackId) => {
+        dispatcher('delete-feedback', feedbackId)
+    }
+
+    // so in order to delete a feedback, 
+    // we need to transfer the state back to App.svelte
+    // we need somehow send the state up
+    // so how we do it is we dispatch a custom event
+    
 </script>
 
 <Card>
     <div class="num-display">
         {feedbackObj.rating}
     </div>
-    <button class="close">
+    <button class="close" on:click={handleDelete(feedbackObj.id)}>
         X
     </button>
     <p class="text-display">
