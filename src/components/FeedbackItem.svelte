@@ -3,17 +3,17 @@
     import {createEventDispatcher} from 'svelte'
     export let feedbackObj = {};
     
-    const dispatcher = createEventDispatcher()
+    const dispatch = createEventDispatcher()
 
+    // so when event 'delete-feedback' trigger, 
+    // it would return the feedbackID to its parents components, in this case, FeedbackList
     const handleDelete = (feedbackId) => {
-        dispatcher('delete-feedback', feedbackId)
+        dispatch('delete-feedback', feedbackId)
     }
 
     // so in order to delete a feedback, 
-    // we need to transfer the state back to App.svelte
-    // we need somehow send the state up
-    // so how we do it is we dispatch a custom event
-    
+    // we need to create a custom event that FeedbackItem can dispatch to App.svelte
+    // when we click the X button, it trigger the custom event and App.svelte will delete it
 </script>
 
 <Card>
