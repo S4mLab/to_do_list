@@ -1,5 +1,6 @@
 <script>
 	import FeedbackList from './components/FeedbackList.svelte'
+	import FeedbackStats from './components/FeedbackStats.svelte'
 
 	let feedbackObjList = [
 		{
@@ -39,6 +40,6 @@
 </script>
 
 <main class="container">
-	<h3> Average Rating: { averageRating }</h3>
+	<FeedbackStats {totalFeedbackNum} {averageRating} />
 	<FeedbackList {feedbackObjList} on:delete-feedback={handleDelete}/>
 </main>
