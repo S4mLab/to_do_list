@@ -22,12 +22,14 @@
 	$: totalFeedbackNum = feedbackObjList.length;
 
 	const initialValue = 0;
-	$: averageRating = feedbackObjList.reduce(
-		() => {
-
+	$: totalRating = feedbackObjList.reduce(
+		(ratingAccumulator, feedbackObj) => {
+			return ratingAccumulator + feedbackObj.rating
 		},
 		initialValue
-	)
+	) 
+
+	$: averageRating = totalRating / totalFeedbackNum
 
 	const handleDelete = (event) => {
 		feedbackObjList = feedbackObjList.filter(
@@ -37,5 +39,6 @@
 </script>
 
 <main class="container">
+	<h3> Average Rating: { averageRating }</h3>
 	<FeedbackList {feedbackObjList} on:delete-feedback={handleDelete}/>
 </main>
