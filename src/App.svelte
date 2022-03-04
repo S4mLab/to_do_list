@@ -18,8 +18,24 @@
 			text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
 		},
 	]
+
+	$: totalFeedbackNum = feedbackObjList.length;
+
+	const initialValue = 0;
+	$: averageRating = feedbackObjList.reduce(
+		() => {
+
+		},
+		initialValue
+	)
+
+	const handleDelete = (event) => {
+		feedbackObjList = feedbackObjList.filter(
+			feedbackObj => feedbackObj.id != event.detail
+		)
+	}
 </script>
 
 <main class="container">
-	<FeedbackList {feedbackObjList} />
+	<FeedbackList {feedbackObjList} on:delete-feedback={handleDelete}/>
 </main>
