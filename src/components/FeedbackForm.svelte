@@ -4,6 +4,7 @@
     import RatingSelect from './RatingSelect.svelte'
 
     let text = '';
+    let rating = 10;
     let btnDisable = true;
     let message;
     const minTextLength = 10;
