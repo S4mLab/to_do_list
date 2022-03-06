@@ -1,6 +1,15 @@
 <script>
     let selected = 10;
     const onChange = () => {};
+
+    /*
+    how does select rating works?
+    1. when user click a rating button, it return a numeric value
+    2. then pass this value to FeedbackForm 
+    3. when FeedbackForm triggered the customed event from RatingSelect
+    4. it receives the rating value and add to the text input to pass to App
+    5. if user didn't choose a rating, we will set the rating as 10 as default rating
+    */
 </script>
 
 <ul class="rating">
