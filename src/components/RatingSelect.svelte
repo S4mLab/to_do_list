@@ -1,10 +1,10 @@
 <script>
     import {createEventDispatcher} from 'svelte'
-    let selected = 10;
+    let selectedRating;
     const ratingList = [1,2,3,4,5,6,7,8,9,10]
     const dispatch = createEventDispatcher()
-    const onChange = (ratingNum) => {
-        dispatch('rating-selected', ratingNum)
+    const onChange = () => {
+        dispatch('rating-selected', selectedRating)
     };
 
     /*
@@ -25,7 +25,7 @@
                 name="rating" 
                 id={'num'+{ratingValue}} 
                 value={ratingValue} 
-                bind:group={selected} 
+                bind:group={selectedRating} 
                 on:change={onChange}
             />
             <label for={'num'+{ratingValue}}> {ratingValue} </label>

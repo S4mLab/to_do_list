@@ -4,7 +4,7 @@
     import RatingSelect from './RatingSelect.svelte'
 
     let text = '';
-    let rating = 10;
+    let defaultedRating = 10;
     let btnDisable = true;
     let message;
     const minTextLength = 10;
@@ -19,6 +19,11 @@
             btnDisable = false;
         }
     }
+
+    const handleRating = (event) => {
+        const feedbackRating = event.detail
+        console.log(feedbackRating);
+    }
 </script>
 
 <Card>
@@ -26,7 +31,7 @@
         <h2>How would you rate your service with us?</h2>
     </header>
     <form>
-        <RatingSelect />
+        <RatingSelect on:rating-selected={handleRating}/>
         <div class="input-group">
             <input type="text" on:input={handleInput} bind:value={text} placeholder="Tell us something that keeps you coming back!">
             <Button disable={btnDisable} type="submit"> Send </Button>
