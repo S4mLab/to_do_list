@@ -9,7 +9,7 @@
 
     /*
     how does select rating works?
-    1. when user click a rating button, it return a numeric value
+    1. when user click a rating button, it returns a numeric value
     2. then pass this value to FeedbackForm 
     3. when FeedbackForm triggered the customed event from RatingSelect
     4. it receives the rating value and add to the text input to pass to App
@@ -23,12 +23,12 @@
             <input 
                 type="radio" 
                 name="rating" 
-                id={'num'+{ratingValue}} 
+                id={'num'+ratingValue} 
                 value={ratingValue} 
                 bind:group={selectedRating} 
                 on:change={onChange}
             />
-            <label for={'num'+{ratingValue}}> {ratingValue} </label>
+            <label for={'num'+ratingValue}> {ratingValue} </label>
         </li>
     {/each}
 </ul>
