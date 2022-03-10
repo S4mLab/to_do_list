@@ -61,7 +61,13 @@
                 bind:value={inputText} 
                 placeholder="Tell us something that keeps you coming back!"
             />
-            <Button disable={btnDisable} type="submit"> Send </Button>
+            <Button 
+                disable={btnDisable} 
+                type="submit"
+                eventFunc = {submitFeedback}
+            > 
+                Send 
+            </Button>
         </div>
         {#if message}
             <div class="message">

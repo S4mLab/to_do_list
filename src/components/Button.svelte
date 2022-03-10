@@ -2,9 +2,10 @@
     export let style = 'primary';
     export let type = 'button';
     export let disable = false;
+    export let eventFunc;
 </script>
 
-<button {type} {disable} class={style}>
+<button {type} {disable} class={style} on:click={eventFunc}>
     <slot></slot>
 </button>
 
