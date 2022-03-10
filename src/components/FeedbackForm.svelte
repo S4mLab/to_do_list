@@ -1,5 +1,5 @@
 <script>
-    export let feedbackList = [];
+    export let feedbackObjList = [];
 
     import Button from './Button.svelte';
     import Card from './Card.svelte';
@@ -36,7 +36,7 @@
     // when invoked, activate customed event 'feedback-submitted' 
     // and return the feedback obj
     const submitFeedback = () => {
-        const newFeedbackId = feedbackList.length + 1;
+        const newFeedbackId = feedbackObjList.length + 1;
         dispatchFeedbackSubmit(
             'feedback-submitted',
             {

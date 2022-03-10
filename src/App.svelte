@@ -45,10 +45,16 @@
 			feedbackObj => feedbackObj.id != event.detail
 		)
 	}
+
+	// add the new feedback obj to feedbackObjList
+	const addNewFeedback = (event) => {
+		const eventObj = event.detail
+		console.log(eventObj);
+	}
 </script>
 
 <main class="container">
-	<FeedbackForm {FeedbackList}/>
+	<FeedbackForm {feedbackObjList} on:feedback-submitted={addNewFeedback}/>
 	<FeedbackStats {totalFeedbackNum} {averageRating} />
 	<FeedbackList {feedbackObjList} on:delete-feedback={handleDelete}/>
 </main>
