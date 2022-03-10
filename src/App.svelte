@@ -38,7 +38,7 @@
 		initialValue
 	) 
 
-	$: averageRating = totalRating / totalFeedbackNum
+	$: averageRating = totalRating / totalFeedbackNum;
 
 	const handleDelete = (event) => {
 		feedbackObjList = feedbackObjList.filter(

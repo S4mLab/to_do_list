@@ -52,7 +52,7 @@
     <header>
         <h2>How would you rate your service with us?</h2>
     </header>
-    <form>
+    <form on:submit|preventDefault={submitFeedback}>
         <RatingSelect on:rating-selected={extractedRating} />
         <div class="input-group">
             <input 
@@ -64,7 +64,6 @@
             <Button 
                 disable={btnDisable} 
                 type="submit"
-                eventFunc = {submitFeedback}
             > 
                 Send 
             </Button>
