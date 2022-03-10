@@ -35,8 +35,8 @@
 
     // when invoked, activate customed event 'feedback-submitted' 
     // and return the feedback obj
+    $:newFeedbackId = feedbackObjList.length + 1;
     const submitFeedback = () => {
-        const newFeedbackId = feedbackObjList.length + 1;
         dispatchFeedbackSubmit(
             'feedback-submitted',
             {
