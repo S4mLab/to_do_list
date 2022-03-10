@@ -48,7 +48,7 @@
 </script>
 
 <main class="container">
-	<FeedbackForm />
+	<FeedbackForm {FeedbackList}/>
 	<FeedbackStats {totalFeedbackNum} {averageRating} />
 	<FeedbackList {feedbackObjList} on:delete-feedback={handleDelete}/>
 </main>
