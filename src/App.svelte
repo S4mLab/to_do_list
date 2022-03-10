@@ -48,9 +48,10 @@
 
 	// add the new feedback obj to feedbackObjList
 	const addNewFeedback = (event) => {
-		const eventObj = event.detail
-		console.log(eventObj);
-	}
+		const newFeedbackObj = event.detail
+		feedbackObjList = [newFeedbackObj, ...feedbackObjList]
+		}
+	
 </script>
 
 <main class="container">
