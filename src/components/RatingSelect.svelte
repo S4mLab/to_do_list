@@ -27,6 +27,7 @@
                 value={ratingValue} 
                 bind:group={selectedRating} 
                 on:change={onChange}
+                checked
             />
             <label for={'num'+ratingValue}> {ratingValue} </label>
         </li>

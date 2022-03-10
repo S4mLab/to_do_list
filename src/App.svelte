@@ -2,6 +2,12 @@
 	import FeedbackForm from './components/FeedbackForm.svelte'
 	import FeedbackStats from './components/FeedbackStats.svelte'
 	import FeedbackList from './components/FeedbackList.svelte'
+
+	/*
+	now you have all the input: rating and text
+	need to put them into an obj
+	then add it the feedbackList
+	*/ 
 	
 
 	let feedbackObjList = [

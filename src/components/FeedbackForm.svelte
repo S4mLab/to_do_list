@@ -4,12 +4,11 @@
     import RatingSelect from './RatingSelect.svelte'
 
     let text = '';
-    let defaultedRating = 10;
     let btnDisable = true;
     let message;
     const minTextLength = 10;
     
-
+    // checking the condition for user feedback input
     const handleInput = () => {
         if (text.trim().length <= minTextLength) {
             message = `Text must be at least ${minTextLength} characters`;
@@ -20,9 +19,12 @@
         }
     }
 
+    // get the rating value 
+    // add it the feedback item 
+    // then add the new feedback item to the feedback list
     const handleRating = (event) => {
         const feedbackRating = event.detail
-        console.log(feedbackRating);
+        
     }
 </script>
 
@@ -33,7 +35,12 @@
     <form>
         <RatingSelect on:rating-selected={handleRating}/>
         <div class="input-group">
-            <input type="text" on:input={handleInput} bind:value={text} placeholder="Tell us something that keeps you coming back!">
+            <input 
+                type="text" 
+                on:input={handleInput} 
+                bind:value={text} 
+                placeholder="Tell us something that keeps you coming back!"
+            />
             <Button disable={btnDisable} type="submit"> Send </Button>
         </div>
         {#if message}
