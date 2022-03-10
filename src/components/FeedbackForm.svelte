@@ -1,16 +1,21 @@
 <script>
+    export let feedbackList = [];
+
     import Button from './Button.svelte';
     import Card from './Card.svelte';
     import RatingSelect from './RatingSelect.svelte'
 
-    let text = '';
+    import {createEventDispatcher} from 'svelte'
+
+    let inputText = '';
+    let inputRating = 10;
     let btnDisable = true;
     let message;
     const minTextLength = 10;
     
     // checking the condition for user feedback input
     const handleInput = () => {
-        if (text.trim().length <= minTextLength) {
+        if (inputText.trim().length <= minTextLength) {
             message = `Text must be at least ${minTextLength} characters`;
             btnDisable = true;
         } else {
@@ -20,11 +25,26 @@
     }
 
     // get the rating value 
-    // add it the feedback item 
-    // then add the new feedback item to the feedback list
-    const handleRating = (event) => {
-        const feedbackRating = event.detail
-        
+    // rating will be combined with text input into a obj
+    // then create a custom event to return the feedback obj to App
+    const extractedRating = (event) => {
+        inputRating = event.detail;
+    }
+
+    const dispatchFeedbackSubmit = createEventDispatcher()
+
+    // when invoked, activate customed event 'feedback-submitted' 
+    // and return the feedback obj
+    const submitFeedback = () => {
+        const newFeedbackId = feedbackList.length + 1;
+        dispatchFeedbackSubmit(
+            'feedback-submitted',
+            {
+                id: newFeedbackId,
+                rating: inputRating,
+                text: inputText,
+            }
+        )
     }
 </script>
 
@@ -33,12 +53,12 @@
         <h2>How would you rate your service with us?</h2>
     </header>
     <form>
-        <RatingSelect on:rating-selected={handleRating}/>
+        <RatingSelect on:rating-selected={extractedRating} />
         <div class="input-group">
             <input 
                 type="text" 
                 on:input={handleInput} 
-                bind:value={text} 
+                bind:value={inputText} 
                 placeholder="Tell us something that keeps you coming back!"
             />
             <Button disable={btnDisable} type="submit"> Send </Button>
